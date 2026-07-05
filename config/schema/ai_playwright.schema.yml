@@ -1,0 +1,19 @@
+ai_playwright.settings:
+  type: config_object
+  label: 'AI Playwright settings'
+  mapping:
+    internal_base:
+      type: string
+      label: 'Internal base URL the browser uses to reach this site'
+    node_binary:
+      type: string
+      label: 'Node.js binary'
+    timeout:
+      type: integer
+      label: 'Browser capture timeout (seconds)'
+    screenshot_scheme:
+      type: string
+      label: 'Stream wrapper for saved screenshots'
+    allow_external_urls:
+      type: boolean
+      label: 'Allow opening absolute off-site URLs'

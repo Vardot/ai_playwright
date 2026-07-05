@@ -1,0 +1,16 @@
+# The base URL the bundled browser uses to reach this site from the server.
+# The Node process runs on the same host as Drupal, so it reaches the site on
+# the local loopback - avoiding external DNS, TLS and routing. Override for
+# unusual local setups (e.g. a container hostname or a non-default port).
+internal_base: 'http://localhost'
+# The Node.js binary the browser script runs with. A bare "node" is resolved
+# from PATH; pin an absolute path when the web server has no PATH to it.
+node_binary: 'node'
+# How long (seconds) a single browser capture may run before it is killed.
+timeout: 90
+# The stream wrapper screenshots are written to as managed files.
+screenshot_scheme: 'public'
+# Whether the tool may open an absolute off-site http(s) URL. Off by default:
+# the tool then only ever opens paths on this site (resolved against
+# internal_base), which is the safe, intended use.
+allow_external_urls: false

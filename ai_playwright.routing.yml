@@ -1,0 +1,7 @@
+ai_playwright.settings:
+  path: '/admin/config/ai/playwright'
+  defaults:
+    _form: 'Drupal\ai_playwright\Form\SettingsForm'
+    _title: 'AI Playwright'
+  requirements:
+    _permission: 'administer ai playwright'

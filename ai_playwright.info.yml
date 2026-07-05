@@ -1,0 +1,10 @@
+name: 'AI Playwright'
+type: module
+description: 'Gives Drupal AI Agents eyes on a rendered page: a Playwright browser tool that opens a page of this site in headless Chromium and returns a screenshot, title, visible text and console errors, so the Drupal Canvas AI assistant can see and verify what it builds. Config-driven and framework-agnostic.'
+package: 'AI'
+core_version_requirement: ^11.2
+dependencies:
+  - ai:ai
+  - ai_agents:ai_agents
+  - drupal:file
+configure: ai_playwright.settings

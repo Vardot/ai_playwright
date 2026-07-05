@@ -1,0 +1,19 @@
+{
+  "css": {
+    "ai playwright settings form": "form#ai-playwright-settings, form[data-drupal-selector='ai-playwright-settings']",
+    "ai playwright settings internal base": "#edit-internal-base, input[name='internal_base']",
+    "ai playwright settings node binary": "#edit-node-binary, input[name='node_binary']",
+    "ai playwright settings timeout": "#edit-timeout, input[name='timeout']",
+    "ai playwright settings allow external": "#edit-allow-external-urls, input[name='allow_external_urls']",
+    "ai playwright settings browser details": "details#edit-browser",
+    "ai playwright settings test details": "details#edit-test",
+    "ai playwright test browser button": "#edit-test-browser, input[value='Test browser capture']",
+    "ai playwright save configuration button": "#edit-submit, input[value='Save configuration']",
+    "ai playwright settings form errors": "form#ai-playwright-settings [aria-invalid='true'], form[data-drupal-selector='ai-playwright-settings'] [aria-invalid='true']",
+
+    "ai playwright admin menu link": ".admin-item__link[href$='/admin/config/ai/playwright']"
+  },
+  "xpath": {
+    "ai playwright admin menu link": "//a[contains(@class,'admin-item__link') and contains(@href,'/admin/config/ai/playwright')]"
+  }
+}

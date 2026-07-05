@@ -1,0 +1,39 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "node_modules/**",
+    "vendor/**",
+    "*.min.js",
+    "package.json",
+    "package-lock.json",
+    "yarn.lock"
+  ],
+  "words": [
+    "Chromium",
+    "ddev",
+    "describ",
+    "drupalci",
+    "drush",
+    "figma",
+    "infobars",
+    "loopback",
+    "mkdocs",
+    "networkidle",
+    "Natshah",
+    "nodesource",
+    "playwright",
+    "pymdownx",
+    "runserver",
+    "screenshot",
+    "sqlite",
+    "superfences",
+    "unbootable",
+    "vardot",
+    "webmaster",
+    "webship"
+  ],
+  "ignoreRegExpList": [
+    "/[A-Za-z0-9+/]{40,}={0,2}/"
+  ]
+}

@@ -1,0 +1,9 @@
+use ai playwright:
+  title: 'Use the AI Playwright browser tool'
+  description: 'Let the AI tool open a page of this site in a headless browser as the acting user and capture it. Grant only to trusted roles.'
+  restrict access: true
+
+administer ai playwright:
+  title: 'Administer AI Playwright'
+  description: 'Configure the module settings (internal base URL, Node binary, timeout).'
+  restrict access: true

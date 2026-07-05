@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Install and requirements hooks for AI Playwright.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Extension\Requirement\RequirementSeverity;
+use Drupal\Core\Url;
+use Symfony\Component\Process\Process;
+
+/**
+ * Implements hook_requirements().
+ *
+ * Reports whether the Node.js binary the browser tool needs is reachable. This
+ * is best-effort: Playwright itself is only exercised when the tool runs, and a
+ * missing runtime fails the tool gracefully rather than breaking the site.
+ */
+function ai_playwright_requirements(string $phase): array {
+  $requirements = [];
+  if ($phase !== 'runtime') {
+    return $requirements;
+  }
+
+  $node = trim((string) (\Drupal::config('ai_playwright.settings')->get('node_binary') ?: 'node'));
+  $settings_url = Url::fromRoute('ai_playwright.settings')->toString();
+  $version = '';
+  try {
+    $process = new Process([$node, '--version'], NULL, NULL, NULL, 10);
+    $process->run();
+    if ($process->isSuccessful()) {
+      $version = trim($process->getOutput());
+    }
+  }
+  catch (\Throwable) {
+    // Treated as "not found" below.
+  }
+
+  if ($version === '') {
+    $requirements['ai_playwright_node'] = [
+      'title' => t('AI Playwright'),
+      'value' => t('Node.js not found'),
+      'severity' => RequirementSeverity::Warning,
+      'description' => t('The browser tool needs Node.js 18+ and Playwright on the server. Install them, then set the Node binary on <a href=":url">the settings page</a>.', [
+        ':url' => $settings_url,
+      ]),
+    ];
+  }
+  else {
+    $requirements['ai_playwright_node'] = [
+      'title' => t('AI Playwright'),
+      'value' => t('Node.js @version', ['@version' => $version]),
+      'severity' => RequirementSeverity::OK,
+    ];
+  }
+
+  return $requirements;
+}

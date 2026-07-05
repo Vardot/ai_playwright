@@ -1,0 +1,6 @@
+ai_playwright.settings:
+  title: 'AI Playwright'
+  description: 'Configure the Playwright browser tool: internal base URL, Node binary and timeout.'
+  route_name: ai_playwright.settings
+  parent: ai.admin_settings
+  weight: 5

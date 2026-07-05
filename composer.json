@@ -1,0 +1,36 @@
+{
+    "name": "drupal/ai_playwright",
+    "description": "Gives Drupal AI Agents eyes on a rendered page - a Playwright browser tool that returns a screenshot, title, text and console errors so the Drupal Canvas AI assistant can see and verify what it builds. Config-driven and framework-agnostic.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "Drupal",
+        "AI",
+        "AI Agents",
+        "Playwright",
+        "Drupal Canvas",
+        "browser",
+        "screenshot"
+    ],
+    "homepage": "https://www.drupal.org/project/ai_playwright",
+    "authors": [
+        {
+            "name": "Vardot",
+            "homepage": "https://www.vardot.com",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/ai_playwright",
+        "source": "https://git.drupalcode.org/project/ai_playwright"
+    },
+    "require": {
+        "php": ">=8.3",
+        "drupal/core": "^11",
+        "drupal/ai": "^1",
+        "drupal/ai_agents": "^1"
+    },
+    "suggest": {
+        "ext-node": "Node.js 18+ with Playwright (npm install playwright && npx playwright install --with-deps chromium) is required on the server for the browser tool to run."
+    }
+}

@@ -1,0 +1,12 @@
+services:
+  ai_playwright.runner:
+    class: Drupal\ai_playwright\PlaywrightRunner
+    arguments:
+      - '@config.factory'
+      - '@logger.factory'
+      - '@extension.list.module'
+      - '@file_system'
+      - '@file.repository'
+      - '@entity_type.manager'
+      - '@current_user'
+      - '@datetime.time'
