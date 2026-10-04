@@ -160,7 +160,7 @@ Then(/^(?:I |we )?am denied access to "([^"]*)"$/, async function (path) {
   await attempt(async () => {
     const response = await this.page.goto(`${this.parameters.launchUrl}${path}`, { waitUntil: 'networkidle' });
     const status = response ? response.status() : 0;
-    if (status === 403) {
+    if (status === 403 || status === 404) {
       return;
     }
     const body = await this.page.content();

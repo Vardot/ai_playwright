@@ -10,3 +10,4 @@ services:
       - '@entity_type.manager'
       - '@current_user'
       - '@datetime.time'
+      - '@?Drupal\user\OneTimeAuthentication'

@@ -6,6 +6,7 @@ namespace Drupal\ai_playwright;
 
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Component\Serialization\Json;
+use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleExtensionList;
@@ -15,6 +16,7 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\file\FileRepositoryInterface;
+use Drupal\user\OneTimeAuthentication;
 use Symfony\Component\Process\Process;
 
 /**
@@ -45,6 +47,7 @@ class PlaywrightRunner {
     protected EntityTypeManagerInterface $entityTypeManager,
     protected AccountInterface $currentUser,
     protected TimeInterface $time,
+    protected ?OneTimeAuthentication $oneTimeAuthentication = NULL,
   ) {}
 
   /**
@@ -201,7 +204,7 @@ class PlaywrightRunner {
       $url = Url::fromRoute('user.reset.login', [
         'uid' => $account->id(),
         'timestamp' => $timestamp,
-        'hash' => user_pass_rehash($account, $timestamp),
+        'hash' => DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.4.0', fn() => $this->oneTimeAuthentication->generateHmac($account, $timestamp), fn() => user_pass_rehash($account, $timestamp)),
       ], ['absolute' => TRUE])->toString();
       $path = parse_url($url, PHP_URL_PATH) ?: '';
       $query = parse_url($url, PHP_URL_QUERY);

@@ -88,7 +88,7 @@ final class BrowserPreview extends FunctionCallBase implements ExecutableFunctio
   /**
    * {@inheritdoc}
    */
-  public function execute(): void {
+  public function execute(?object $object = NULL): void {
     if (
       !$this->currentUser->hasPermission('use ai playwright')
       && !$this->currentUser->hasPermission('administer ai agents')
