@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\Tests\ai_playwright\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
@@ -17,9 +18,8 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  * dependency graph cannot be satisfied in the Kernel environment (e.g. a
  * contrib module is absent or unbootable), the test SKIPS with a clear message
  * instead of erroring, keeping the suite green.
- *
- * @group ai_playwright
  */
+#[Group('ai_playwright')]
 #[RunTestsInSeparateProcesses]
 class InstallTest extends KernelTestBase {
 

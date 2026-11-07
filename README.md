@@ -25,7 +25,7 @@ Agents**. Config-driven and framework-agnostic.
 - Drupal **^11.2**
 - `ai` (Drupal AI) and `ai_agents`
 - Drupal core `file`
-- On the server: **Node.js 18+** and **Playwright** with Chromium
+- On the server: **Node.js 24 or 26** and **Playwright** with Chromium
 
 ## Install
 

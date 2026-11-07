@@ -9,7 +9,7 @@ can see how a page renders.
 
 The tool needs, on the server that runs Drupal:
 
-- **Node.js 18+**
+- **Node.js 24 or 26**
 - **Playwright** with the Chromium browser, installed from this folder:
 
   ```

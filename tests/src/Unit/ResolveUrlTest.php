@@ -10,12 +10,13 @@ use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @coversDefaultClass \Drupal\ai_playwright\PlaywrightRunner
- *
- * @group ai_playwright
  */
+#[Group('ai_playwright')]
 class ResolveUrlTest extends UnitTestCase {
 
   /**
@@ -30,7 +31,7 @@ class ResolveUrlTest extends UnitTestCase {
    *   The runner under test.
    */
   protected function runner(string $base, bool $allowExternal): PlaywrightRunner {
-    $config = $this->createMock(ImmutableConfig::class);
+    $config = $this->createStub(ImmutableConfig::class);
     $config->method('get')->willReturnMap([
       ['internal_base', $base],
       ['allow_external_urls', $allowExternal],
@@ -38,8 +39,8 @@ class ResolveUrlTest extends UnitTestCase {
     $configFactory = $this->createMock(ConfigFactoryInterface::class);
     $configFactory->method('get')->with('ai_playwright.settings')->willReturn($config);
 
-    $logger = $this->createMock(LoggerChannelInterface::class);
-    $loggerFactory = $this->createMock(LoggerChannelFactoryInterface::class);
+    $logger = $this->createStub(LoggerChannelInterface::class);
+    $loggerFactory = $this->createStub(LoggerChannelFactoryInterface::class);
     $loggerFactory->method('get')->willReturn($logger);
 
     // Only config + logger are touched by resolveUrl(); the rest can be bare
@@ -47,20 +48,19 @@ class ResolveUrlTest extends UnitTestCase {
     return new PlaywrightRunner(
       $configFactory,
       $loggerFactory,
-      $this->createMock('Drupal\Core\Extension\ModuleExtensionList'),
-      $this->createMock('Drupal\Core\File\FileSystemInterface'),
-      $this->createMock('Drupal\file\FileRepositoryInterface'),
-      $this->createMock('Drupal\Core\Entity\EntityTypeManagerInterface'),
-      $this->createMock('Drupal\Core\Session\AccountInterface'),
-      $this->createMock('Drupal\Component\Datetime\TimeInterface'),
+      $this->createStub('Drupal\Core\Extension\ModuleExtensionList'),
+      $this->createStub('Drupal\Core\File\FileSystemInterface'),
+      $this->createStub('Drupal\file\FileRepositoryInterface'),
+      $this->createStub('Drupal\Core\Entity\EntityTypeManagerInterface'),
+      $this->createStub('Drupal\Core\Session\AccountInterface'),
+      $this->createStub('Drupal\Component\Datetime\TimeInterface'),
     );
   }
 
   /**
    * @covers ::resolveUrl
-   *
-   * @dataProvider resolveProvider
    */
+  #[DataProvider('resolveProvider')]
   public function testResolveUrl(string $base, bool $allowExternal, string $input, ?string $expected): void {
     $this->assertSame($expected, $this->runner($base, $allowExternal)->resolveUrl($input));
   }
